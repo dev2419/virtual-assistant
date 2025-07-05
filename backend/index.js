@@ -12,6 +12,7 @@ import geminiResponse from "./gemini.js"
 const app = express();
 app.use(cors({
     origin: "https://virtual-assistant-djoz.onrender.com",
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }))
 const PORT = process.env.PORT || 5000;
