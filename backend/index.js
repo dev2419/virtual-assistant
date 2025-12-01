@@ -21,8 +21,18 @@ app.use(cookieParser())
 app.use("/api/auth",authRouter)
 app.use("/api/user",userRouter)
 
+const startServer = async () => {
+  try {
+    await connectDb();                     // CONNECT FIRST
+    console.log("MongoDB connected");
 
-app.listen(PORT, () => {
-    connectDb()
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+
+  } catch (err) {
+    console.log("Server start error:", err);
+  }
+};
+
+startServer();
